@@ -1,0 +1,2 @@
+INSERT INTO users (login, password, role) VALUES ('admin', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBhc/JKdXpKu', 'ADMIN'); -- Senha: admin123
+INSERT INTO users (login, password, role) VALUES ('user', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBhc/JKdXpKu', 'USER'); -- Senha: user123

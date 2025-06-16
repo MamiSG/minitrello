@@ -1,29 +1,27 @@
 package com.example.demo.model;
 
-import com.example.demo.repository.Repository;
-
-import java.util.List;
-
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
 
+@Service
 public class UserService implements UserDetailsService {
 
     @Autowired
-    Repository repository;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByLogin(username);
+        return userRepository.findByLogin(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + username));
     }
 
     public List<Users> getAllUsers() {
-        return repository.findAll();
+        return userRepository.findAll();
     }
-
 }
